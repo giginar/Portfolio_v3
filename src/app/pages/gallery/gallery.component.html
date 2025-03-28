@@ -1,6 +1,46 @@
-<div class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    <img *ngFor="let photo of photos"
-         [src]="photo.url"
-         [alt]="photo.title"
-         class="w-full h-64 object-cover rounded-xl shadow-lg hover:scale-105 transition" />
+<div class="max-w-6xl mx-auto p-6">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Underwater Photography</h2>
+  
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div
+        *ngFor="let photo of photos"
+        class="relative group cursor-pointer"
+        (click)="openPhoto(photo)"
+      >
+        <img
+          [src]="photo.url"
+          [alt]="photo.title"
+          class="w-full h-64 object-cover rounded-lg shadow-md group-hover:scale-105 transition duration-300"
+        />
+        <div
+          class="absolute bottom-0 left-0 right-0 caption text-white text-sm px-3 py-2 opacity-0 group-hover:opacity-100 transition"
+        >
+          {{ photo.title }}
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal -->
+    <div
+      *ngIf="selectedPhoto"
+      class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+      (click)="closePhoto()"
+    >
+      <div class="relative max-w-4xl w-full p-4">
+        <img
+          [src]="selectedPhoto.url"
+          [alt]="selectedPhoto.title"
+          class="w-full max-h-[80vh] object-contain rounded-lg shadow-lg"
+        />
+        <p class="text-white text-center mt-4 text-sm">{{ selectedPhoto.title }}</p>
+        <button
+          (click)="closePhoto()"
+          class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-75 transition"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
   </div>
+  

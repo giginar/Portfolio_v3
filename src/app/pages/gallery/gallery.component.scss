@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  background-color: #f3f4f6; // açık gri, göz yormaz
+  color: #1f2937; // koyu gri metin
+}
+
+img {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.caption {
+  background-color: rgba(30, 58, 138, 0.6); // maviye çalan caption arkası
+}
